@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DevOps Weather Watch</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🌦 DevOps Weather Watch</h1>
+    <p class="desc">Get the live temperature of any city, with logs saved automatically.</p>
+
+    <form method="get" action="/weather">
+      <input type="text" name="city" placeholder="Enter city name" required />
+      <button type="submit">Get Weather</button>
+    </form>
+
+    {% if city %}
+      <div class="result-box">
+        🌍 City: <strong>{{ city }}</strong><br>
+        🌡️ Temperature: <strong>{{ temp }}°C</strong>
+      </div>
+    {% endif %}
+
+    {% if error %}
+      <div class="error">
+        ⚠️ {{ error }}
+      </div>
+    {% endif %}
+
+    <div class="result-box">
+      <a href="/logs">📜 View Logs (JSON)</a>
+    </div>
+  </div>
+</body>
+</html>
